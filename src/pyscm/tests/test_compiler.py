@@ -20,7 +20,7 @@ def build_program(expr):
 
 
 def build():
-    subprocess.call(["gcc", "ctest.c", ASM_FILENAME, "-o", "ctest"])
+    subprocess.call(["gcc", "runtime.c", ASM_FILENAME, "-o", "ctest"])
 
 
 def execute():
@@ -33,6 +33,11 @@ def execute():
     (2, '2\n'),
     (3, '3\n'),
     (42, '42\n'),
+    (True, '#t\n'),
+    (False, '#f\n'),
+    ('a', '#\\a\n'),
+    ('z', '#\\z\n'),
+    (None, '()\n'),
 ])
 def test_execute(expr, result):
     run_compile(expr)
