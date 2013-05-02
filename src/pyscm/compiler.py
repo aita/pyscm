@@ -2,7 +2,7 @@
 
 import sys
 
-class CompileError(Error):
+class CompileError(Exception):
     pass
 
 

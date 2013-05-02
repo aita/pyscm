@@ -34,9 +34,15 @@ def execute():
     (3, '3\n'),
     (42, '42\n'),
 ])
-def test_with_execute(expr, result):
+def test_execute(expr, result):
     run_compile(expr)
     build()
     assert execute() == result
 
     
+@pytest.mark.parametrize(('expr', 'error'), [
+    ('hello', compiler.CompileError),
+])
+def test_compile_failure(expr, error):
+    with pytest.raises(error):
+        run_compile(expr)
